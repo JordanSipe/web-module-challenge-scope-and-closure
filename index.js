@@ -28,11 +28,11 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+        Counter1 has a nested function and closure.
   2. Which of the two uses a closure? How can you tell?
-  
-  3. In what scenario would the counter1 code be preferable? In what scenario would 
-     counter2 be better?  
+        Counter 1 uses closures. You can tell by the counter function being nested inside of the counterMaker function
+  3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
+        Counter1 would be preferable if you had many counters. Counter2 would be useful if you have just the singular counter.
 */
 
 // counter1 code
@@ -62,8 +62,8 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+  return Math.floor(Math.random()*3);
 }
 
 
@@ -81,8 +81,11 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inningcb, num){
+  return {
+    Home: inning() * num,
+    Away: inning() * num
+  }
 }
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
@@ -90,8 +93,11 @@ Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(callback) {
+  return {
+    Home: callback(),
+    Away: callback()
+  }
 }
 
 
@@ -136,9 +142,21 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
+// function scoreboard(getInningScorecb, inningcb, num) {
+//   let scores = [];
+//   let homeScore = 0;
+//   let awayScore = 0;
+
+//   for (let i = 0; i < num; i++) {
+//     let inningScores = getInningScores(num);
+//     homeScore += inningScores.Home;
+//     awayScore += inningScores.Away
+//     scores.push(`Inning ${num+1}: Away ${inningScores.Away} - Home ${inningScores.Home}`);
+//   }
+//   if (home === away) {
+//     'This game will require extra innings';
+//   }
+// }
 
 
 
